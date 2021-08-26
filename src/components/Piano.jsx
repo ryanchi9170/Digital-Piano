@@ -12,7 +12,7 @@ class Piano extends React.Component {
     return (
       <div className="piano">
         {notes.map((note, index) => {
-          return <Keys note={note} key={index} />;
+          return <Keys note={note} key={index} index={index} />;
         })}
       </div>
     );

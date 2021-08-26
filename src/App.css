@@ -13,6 +13,10 @@
   color: white;
 }
 
+/* .key.C3 {
+  background-color: #33c1ff;
+} */
+
 .key {
   background-color: white;
   height: 250px;
@@ -30,6 +34,11 @@
   z-index: 2;
 }
 
+.key.pressed,
+.key.flat.pressed {
+  background-color: #33c1ff;
+}
+
 .key-text {
   position: relative;
   color: black;
@@ -39,7 +48,16 @@
   pointer-events: none;
 }
 
+.key-text-flat {
+  color: white;
+  margin-top: 125px;
+}
+
 .piano {
   display: flex;
   flex-direction: row;
+}
+
+.pressed {
+  color: blue;
 }

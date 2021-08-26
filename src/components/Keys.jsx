@@ -1,55 +1,93 @@
 import React from "react";
 import * as Tone from "tone";
+import buttonPiano from "../buttonPiano.js";
 
 class Keys extends React.Component {
   constructor(props) {
     super(props);
 
-    this.clickHandler = this.clickHandler.bind(this);
+    window.addEventListener("keydown", buttonPiano);
+
+    this.state = {
+      synth: null,
+      keyboardButton: [
+        "Z",
+        "S",
+        "X",
+        "D",
+        "C",
+        "V",
+        "G",
+        "B",
+        "H",
+        "N",
+        "J",
+        "M",
+        "Q",
+        "2",
+        "W",
+        "3",
+        "E",
+        "R",
+        "5",
+        "T",
+        "6",
+        "Y",
+        "7",
+        "U",
+        "I",
+      ],
+    };
+
+    this.clickNote = this.clickNote.bind(this);
   }
-  clickHandler() {
-    const synth = new Tone.Synth().toDestination();
-    synth.triggerAttackRelease(this.props.note, "8n");
+
+  clickNote(event) {
+    if (event === "down") {
+      const now = Tone.now();
+      const synth = new Tone.Synth().toDestination();
+      this.setState({
+        synth: synth,
+      });
+      synth.triggerAttack(this.props.note, now);
+    } else if (event === "up") {
+      this.state.synth.triggerRelease(this.now);
+    }
   }
-  // clickHandler() {
-  //   const synth = new Tone.PolySynth(Tone.Synth).toDestination();
-  //   const now = Tone.now();
-  //   synth.triggerAttackRelease("C4", "8n", now);
-  //   synth.triggerAttackRelease("D#4", "8n", now);
-  //   synth.triggerAttackRelease("G4", "8n", now);
-  // }
 
   render() {
+    let keyClass = "key";
+    if (this.props.note.length > 2) {
+      keyClass += " flat";
+    }
+    // keyClass += ` ${this.props.note}`;
     return (
-      <div onClick={this.clickHandler}>
+      <div
+        onMouseDown={() => {
+          keyClass += " pressed";
+          this.clickNote("down");
+        }}
+        onMouseUp={() => {
+          keyClass = keyClass.substring(0, keyClass.length - 8);
+          this.clickNote("up");
+        }}
+      >
         {this.props.note.length > 2 ? (
-          <div className="key flat"></div>
+          <div className={keyClass}>
+            <div className="key-text-flat">
+              {this.state.keyboardButton[this.props.index]}
+            </div>
+          </div>
         ) : (
-          <div className="key">
-            <div className="key-text">{this.props.note.slice(0, 1)}</div>
+          <div className={keyClass}>
+            <div className="key-text">
+              {this.state.keyboardButton[this.props.index]}
+            </div>
           </div>
         )}
       </div>
     );
-    // return (
-    //   <div>
-    //     {this.props.note.length > 2 ? (
-    //       <input className="key flat"></input>
-    //     ) : (
-    //       <input className="key">
-    //         <div className="key-text" onKeyDown={this.handleKeyPress}>
-    //           {this.props.note.slice(0, 1)}
-    //         </div>
-    //       </input>
-    //     )}
-    //   </div>
-    // );
   }
 }
 
 export default Keys;
-
-//   <div className="key">
-//     <div className="key-text">{this.props.note}</div>
-//   </div>
-// );
