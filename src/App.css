@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-header {
@@ -60,4 +61,24 @@
 
 .pressed {
   color: blue;
+}
+
+.selector {
+  width: 50%;
+}
+
+.song {
+  width: 50%;
+  height: 75px;
+  z-index: 3;
+  color: black;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  float: right;
+  height: 50%;
 }
