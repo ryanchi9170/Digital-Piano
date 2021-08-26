@@ -20,7 +20,6 @@ class TunePicker extends React.Component {
     if (this.state.songChoice === "pokemon") {
       pokeCenter();
     }
-    console.log(this.state.songChoice);
   }
 
   handleChange(event) {
