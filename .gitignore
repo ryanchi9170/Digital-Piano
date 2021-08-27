@@ -10,6 +10,7 @@
 
 # production
 /build
+MVP.cer
 
 # misc
 .DS_Store
