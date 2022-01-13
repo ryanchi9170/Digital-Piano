@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import options from "../SongChoices.js";
-import { pokeCenter } from "../PresetSongs.js";
+import { pokeCenter, tetris } from "../PresetSongs.js";
 
 class TunePicker extends React.Component {
   constructor(props) {
@@ -19,6 +19,9 @@ class TunePicker extends React.Component {
   clickHandler() {
     if (this.state.songChoice === "pokemon") {
       pokeCenter();
+    }
+    if (this.state.songChoice === "tetris") {
+      tetris();
     }
   }
 

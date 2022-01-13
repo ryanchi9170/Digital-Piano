@@ -1,6 +1,6 @@
 const options = [
   { value: "pokemon", label: "Pokemon" },
-  { value: "not pokemon", label: "blank" },
+  { value: "tetris", label: "Tetris" },
 ];
 
 export default options;
