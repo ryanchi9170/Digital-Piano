@@ -1,7 +1,7 @@
 # Digital Piano
 
 ### Overview
-A digital piano created using the Tone.js library that has click and keyboard press functionality. Includes a nostalgic preset melody from a classic video game that can be played back with a press of a button!
+A digital piano created using the Tone.js library that has click and keyboard press functionality. Includes two nostalgic preset melodies from classic video games that can be played back with a press of a button!
 
 ### Programs/Tools Used:
 * Node
